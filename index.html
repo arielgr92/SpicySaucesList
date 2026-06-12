@@ -1,421 +1,437 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.6">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Private Collection | Signature Hot Sauces</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --gold:#d6b26e;
+    --gold-soft:#f2ddb0;
+    --bg:#0a0a0c;
+    --card:#16161a;
+    --text:#f6f3ed;
+    --muted:#b9b3aa;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    color:var(--text);
+    background:
+        radial-gradient(circle at top right, rgba(214,178,110,.15), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(160,60,30,.12), transparent 40%),
+        linear-gradient(180deg,#090909,#0f0f12);
+    min-height:100vh;
+}
+
+.hero{
+    text-align:center;
+    padding:50px 24px 35px;
+}
+
+.hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:3rem;
+    font-weight:700;
+    letter-spacing:.12em;
+    color:var(--gold-soft);
+}
+
+.hero p{
+    max-width:500px;
+    margin:12px auto 0;
+    color:var(--muted);
+    line-height:1.7;
+    font-size:.95rem;
+}
+
+.container{
+    max-width:720px;
+    margin:auto;
+    padding:0 16px 50px;
+}
+
+.card{
+    background:linear-gradient(145deg,#18181d,#101014);
+    border:1px solid rgba(214,178,110,.15);
+    border-radius:24px;
+    overflow:hidden;
+    margin-bottom:20px;
+    cursor:pointer;
+    transition:all .35s ease;
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.03);
+}
+
+.card:hover{
+    border-color:rgba(214,178,110,.35);
+    transform:translateY(-2px);
+}
+
+.image{
+    height:220px;
+    background-size:cover;
+    background-position:center;
+    position:relative;
+}
+
+.image::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(to top,
+        rgba(0,0,0,.95),
+        rgba(0,0,0,.25),
+        rgba(0,0,0,.05));
+}
+
+.header{
+    position:relative;
+    margin-top:-80px;
+    z-index:2;
+    padding:0 24px 18px;
+}
+
+.name{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2.2rem;
+    font-weight:700;
+    line-height:1;
+}
+
+.ingredients{
+    margin-top:6px;
+    color:var(--gold-soft);
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    font-size:.8rem;
+}
+
+.preview{
+    padding:0 24px 20px;
+    color:#d9d4cb;
+    font-size:.95rem;
+}
+
+.expand{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .5s ease;
+}
+
+.card.active .expand{
+    max-height:700px;
+}
+
+.content{
+    padding:0 24px 26px;
+    border-top:1px solid rgba(255,255,255,.06);
+}
+
+.section{
+    margin-top:18px;
+}
+
+.label{
+    color:var(--gold-soft);
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-size:.75rem;
+    margin-bottom:8px;
+}
+
+.text{
+    color:#ece8e1;
+    line-height:1.8;
+    font-size:.95rem;
+}
+
+.heat{
+    margin-top:20px;
+}
+
+.bar{
+    height:10px;
+    background:#2b2b31;
+    border-radius:999px;
+    overflow:hidden;
+    margin-top:8px;
+}
+
+.fill{
+    height:100%;
+    border-radius:999px;
+    background:
+        linear-gradient(90deg,
+        #f5cf7d 0%,
+        #ff9640 50%,
+        #ff4545 100%);
+}
+
+.footer{
+    text-align:center;
+    color:#777;
+    font-size:.75rem;
+    letter-spacing:.18em;
+    padding:15px 20px 40px;
+}
+
+@media(max-width:480px){
+
+    .hero{
+        padding-top:35px;
+    }
+
+    .hero h1{
+        font-size:2.3rem;
+    }
+
+    .name{
+        font-size:1.9rem;
+    }
+
+    .image{
+        height:190px;
+    }
+}
+</style>
 </head>
+
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1">&lt;title&gt;Private Collection - Signature Hot Sauces&lt;/title&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;style&gt;</p>
-<p class="p1">:root{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--gold:#d6b26e;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--gold-soft:#f2ddb0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--bg:#0b0b0d;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--card:#16161a;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--text:#f7f4ee;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--muted:#b8b4ac;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">*{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>margin:0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>padding:0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>box-sizing:border-box;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">body{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background:</p>
-<p class="p1"><span class="Apple-converted-space">        </span>radial-gradient(circle at top right, rgba(214,178,110,.12), transparent 35%),</p>
-<p class="p1"><span class="Apple-converted-space">        </span>radial-gradient(circle at bottom left, rgba(180,60,30,.15), transparent 40%),</p>
-<p class="p1"><span class="Apple-converted-space">        </span>var(--bg);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>color:var(--text);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-family:'Inter',sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>min-height:100vh;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.hero{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>padding:40px 24px 28px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>text-align:center;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.hero h1{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-family:'Cormorant Garamond',serif;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size:3rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-weight:700;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing:.08em;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>color:var(--gold-soft);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.hero p{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>margin-top:10px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>color:var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size:.95rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>max-width:500px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>margin-left:auto;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>margin-right:auto;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>line-height:1.6;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.container{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>max-width:700px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>margin:auto;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>padding:10px 18px 50px;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.card{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background:linear-gradient(145deg,#18181d,#101014);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>border:1px solid rgba(214,178,110,.15);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>border-radius:24px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>overflow:hidden;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom:18px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>cursor:pointer;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transition:.35s;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>box-shadow:</p>
-<p class="p1"><span class="Apple-converted-space">        </span>0 15px 40px rgba(0,0,0,.35),</p>
-<p class="p1"><span class="Apple-converted-space">        </span>inset 0 1px 0 rgba(255,255,255,.03);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.card:hover{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transform:translateY(-3px);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>border-color:rgba(214,178,110,.35);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.image{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>height:190px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background-size:cover;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background-position:center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>position:relative;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.image::after{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>content:'';</p>
-<p class="p1"><span class="Apple-converted-space">    </span>position:absolute;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>inset:0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background:linear-gradient(to top, rgba(0,0,0,.9), rgba(0,0,0,.15));</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.header{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>position:relative;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>margin-top:-70px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>z-index:2;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>padding:0 22px 18px;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.name{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-family:'Cormorant Garamond',serif;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size:2rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>color:white;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom:4px;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.ingredients{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>color:var(--gold-soft);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size:.85rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing:.08em;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>text-transform:uppercase;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.preview{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>padding:0 22px 20px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>color:#d8d3ca;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size:.92rem;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.expand{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>max-height:0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>overflow:hidden;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>transition:max-height .45s ease;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.card.active .expand{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>max-height:500px;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.content{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>padding:0 22px 26px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>border-top:1px solid rgba(255,255,255,.06);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.section{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>margin-top:18px;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.label{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>color:var(--gold-soft);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size:.78rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>text-transform:uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing:.15em;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom:6px;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.text{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>color:#ebe7df;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>line-height:1.7;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size:.95rem;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.heat{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>margin-top:16px;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.bar{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>margin-top:8px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>height:8px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background:#2a2a30;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>border-radius:999px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>overflow:hidden;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.fill{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>height:100%;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background:linear-gradient(90deg,#f0c36b,#ff7b3d,#ff3f3f);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>border-radius:999px;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">.footer{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>text-align:center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>padding:20px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>color:#777;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-size:.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing:.15em;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">@media(max-width:480px){</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero h1{</p>
-<p class="p1"><span class="Apple-converted-space">        </span>font-size:2.4rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1">}</p>
-<p class="p1">&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;div class="hero"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;PRIVATE COLLECTION&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>Four handcrafted sauces designed to seduce the palate.</p>
-<p class="p1"><span class="Apple-converted-space">        </span>Tap any bottle to reveal its secrets.</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/p&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;div class="container"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- SAUCE 1 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="image"</p>
-<p class="p1"><span class="Apple-converted-space">             </span>style="background-image:url('https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&amp;fit=crop&amp;w=1200&amp;q=80');"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="header"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="name"&gt;Bite My Peach&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="ingredients"&gt;Chili • Peach&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="preview"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Sweet temptation followed by a surprisingly assertive finish.</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="expand"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="content"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="label"&gt;Main Ingredients&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>Ripe peach, vibrant chili peppers, cane sugar,</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>citrus notes and a carefully balanced spice blend.</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="label"&gt;Sensation&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>Velvety sweetness greets the tongue before an intense</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>kick arrives with confidence. The heat builds quickly,</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>then releases into a lingering fruity finish.</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>Intense kick, sudden release — just how we like it.</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="heat"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="label"&gt;Heat Level — 6/10&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bar"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="fill" style="width:60%"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- SAUCE 2 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="image"</p>
-<p class="p1"><span class="Apple-converted-space">             </span>style="background-image:url('https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&amp;fit=crop&amp;w=1200&amp;q=80');"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="header"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="name"&gt;Mango Me Harder&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="ingredients"&gt;Mango • Habanero&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="preview"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Tropical charm with a playful edge.</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="expand"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="content"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="label"&gt;Main Ingredients&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>Fresh mango, habanero peppers,</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>tropical fruit concentrates and citrus accents.</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="label"&gt;Sensation&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>Rich mango sweetness glides across the palate before</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>the habanero begins its flirtation. Smooth, bright and</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>dangerously inviting, it keeps drawing you back for</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>another taste.</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="heat"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="label"&gt;Heat Level — 5/10&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bar"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="fill" style="width:50%"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- SAUCE 3 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="image"</p>
-<p class="p1"><span class="Apple-converted-space">             </span>style="background-image:url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&amp;fit=crop&amp;w=1200&amp;q=80');"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="header"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="name"&gt;Clitorch&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="ingredients"&gt;Chipotle • Tomato&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="preview"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Smoky sophistication with irresistible restraint.</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="expand"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="content"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="label"&gt;Main Ingredients&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>Chipotle peppers, slow-cooked tomatoes,</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>aromatic herbs and a touch of tequila.</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="label"&gt;Sensation&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>Woody smoke, subtle sweetness and herbal complexity</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>unfold gradually. Elegant rather than aggressive,</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>this sauce prefers a slow, teasing approach.</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="heat"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="label"&gt;Heat Level — 2/10&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bar"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="fill" style="width:20%"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- SAUCE 4 --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="image"</p>
-<p class="p1"><span class="Apple-converted-space">             </span>style="background-image:url('https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&amp;fit=crop&amp;w=1200&amp;q=80');"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="header"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="name"&gt;Throat Burner&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="ingredients"&gt;Poblano • Tomatillo&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="preview"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Gentle heat wrapped in green sophistication.</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="expand"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="content"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="label"&gt;Main Ingredients&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>Roasted poblano peppers, fresh tomatillos,</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>garlic, herbs and citrus undertones.</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="label"&gt;Sensation&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>Bright, green and unexpectedly smooth.</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>Its personality is earthy and refined,</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>delivering flavor first and heat second.</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>Rough only when it's done properly.</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="heat"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="label"&gt;Heat Level — 1/10&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bar"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="fill" style="width:10%"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;div class="footer"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>SIGNATURE HOT SAUCE COLLECTION</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;script&gt;</p>
-<p class="p1">document.querySelectorAll('.card').forEach(card =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>card.addEventListener('click', () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>card.classList.toggle('active');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p1">});</p>
-<p class="p1">&lt;/script&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+
+<div class="hero">
+    <h1>PRIVATE COLLECTION</h1>
+    <p>
+        Four handcrafted sauces designed to seduce the palate.
+        Tap any bottle to reveal its secrets.
+    </p>
+</div>
+
+<div class="container">
+
+    <!-- SAUCE 1 -->
+    <div class="card">
+
+        <div class="image"
+             style="background-image:url('img1.png');">
+        </div>
+
+        <div class="header">
+            <div class="name">Bite My Peach</div>
+            <div class="ingredients">Chili • Peach</div>
+        </div>
+
+        <div class="preview">
+            Sweet temptation followed by a surprisingly assertive finish.
+        </div>
+
+        <div class="expand">
+            <div class="content">
+
+                <div class="section">
+                    <div class="label">Main Ingredients</div>
+                    <div class="text">
+                        Ripe peach, vibrant chili peppers, citrus notes,
+                        cane sugar and a carefully balanced spice blend.
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="label">Sensation</div>
+                    <div class="text">
+                        Velvety sweetness greets the tongue before an intense
+                        kick arrives with confidence. The heat builds quickly,
+                        then releases into a lingering fruity finish.
+                        Intense kick, sudden release — just how I like it.
+                    </div>
+                </div>
+
+                <div class="heat">
+                    <div class="label">Heat Level — 6/10</div>
+                    <div class="bar">
+                        <div class="fill" style="width:60%;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SAUCE 2 -->
+    <div class="card">
+
+        <div class="image"
+             style="background-image:url('img2.png');">
+        </div>
+
+        <div class="header">
+            <div class="name">Mango Me Harder</div>
+            <div class="ingredients">Mango • Horny Habanero</div>
+        </div>
+
+        <div class="preview">
+            Tropical sweetness with a playful fiery personality.
+        </div>
+
+        <div class="expand">
+            <div class="content">
+
+                <div class="section">
+                    <div class="label">Main Ingredients</div>
+                    <div class="text">
+                        Fresh mango, habanero peppers,
+                        tropical fruit concentrates and citrus accents.
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="label">Sensation</div>
+                    <div class="text">
+                        Rich mango sweetness glides across the palate before
+                        the habanero begins its flirtation. Smooth, bright,
+                        seductive and dangerously inviting, it keeps drawing
+                        you back for another taste.
+                    </div>
+                </div>
+
+                <div class="heat">
+                    <div class="label">Heat Level — 5/10</div>
+                    <div class="bar">
+                        <div class="fill" style="width:50%;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SAUCE 3 -->
+    <div class="card">
+
+        <div class="image"
+             style="background-image:url('img3.png');">
+        </div>
+
+        <div class="header">
+            <div class="name">Clitorch</div>
+            <div class="ingredients">Chipotle • Tomato</div>
+        </div>
+
+        <div class="preview">
+            Smoky sophistication with irresistible restraint.
+        </div>
+
+        <div class="expand">
+            <div class="content">
+
+                <div class="section">
+                    <div class="label">Main Ingredients</div>
+                    <div class="text">
+                        Chipotle peppers, slow-cooked tomatoes,
+                        aromatic herbs and a touch of tequila.
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="label">Sensation</div>
+                    <div class="text">
+                        Woody smoke, subtle sweetness and herbal complexity
+                        unfold gradually. Elegant rather than aggressive,
+                        this sauce prefers a slow, teasing approach and
+                        leaves a warm lingering finish.
+                    </div>
+                </div>
+
+                <div class="heat">
+                    <div class="label">Heat Level — 2/10</div>
+                    <div class="bar">
+                        <div class="fill" style="width:20%;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SAUCE 4 -->
+    <div class="card">
+
+        <div class="image"
+             style="background-image:url('img4.png');">
+        </div>
+
+        <div class="header">
+            <div class="name">Throat Burner</div>
+            <div class="ingredients">Poblano Pepper • Tomatillo</div>
+        </div>
+
+        <div class="preview">
+            Bright green flavor wrapped in smooth sophistication.
+        </div>
+
+        <div class="expand">
+            <div class="content">
+
+                <div class="section">
+                    <div class="label">Main Ingredients</div>
+                    <div class="text">
+                        Roasted poblano peppers, fresh tomatillos,
+                        garlic, herbs and citrus undertones.
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="label">Sensation</div>
+                    <div class="text">
+                        Bright, earthy and unexpectedly smooth.
+                        Its personality is flavor-first with only a whisper
+                        of heat. Rough like when it's done properly.
+                    </div>
+                </div>
+
+                <div class="heat">
+                    <div class="label">Heat Level — 1/10</div>
+                    <div class="bar">
+                        <div class="fill" style="width:10%;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    SIGNATURE HOT SAUCE COLLECTION
+</div>
+
+<script>
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+        card.classList.toggle('active');
+    });
+});
+</script>
+
 </body>
 </html>
